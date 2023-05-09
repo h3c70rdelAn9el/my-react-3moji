@@ -1,14 +1,41 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import { EmojiContext } from './EmojiContextProvider.js'
 
 function EmojiList() {
     const { emoji, setEmoji } = useContext(EmojiContext)
-    console.log('emoji', emoji)
+    const [search, setSearch] = useState('')
+    // console.log('emoji', emoji)
+
+    const filteredEmoji = useMemo(() => {
+        return emoji.filter((emoji) => {
+            return (
+                emoji.name.toLowerCase().includes(search.toLowerCase()) ||
+                emoji.category.toLowerCase().includes(search.toLowerCase()) ||
+                emoji.htmlCode[0].toLowerCase().includes(search.toLowerCase())
+            )
+        })
+    }, [search, emoji])
 
     return (
         <div className="emoji-list max-w-5xl w-5/6 bg-gray-200 mx-auto shadow-lg shadow-purple-500 rounded-md h-[700px] overflow-scroll">
+            {/* make the search */}
+            <div className="flex flex-row justify-center items-center gap-4 p-3">
+                <input
+                    type="text"
+                    placeholder="Search for your emoji - by name, category, or HTML code"
+                    className="border border-purple-500 rounded-md p-2 w-5/6 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-purple-200 text-sm md:block hidden"
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Search by name, category, or HTML code"
+                    className="border border-purple-500 rounded-md p-2 w-5/6 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-purple-200 text-xs md:hidden block"
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </div>
+
             <div className="flex flex-row flex-wrap gap-4 p-3">
-                {emoji.map((emoji) => (
+                {filteredEmoji.map((emoji) => (
                     <div
                         key={emoji.id}
                         className="flex flex-col border border-purple-500 w-60 rounded-md p-4 mx-auto shadow-lg bg-purple-300">
