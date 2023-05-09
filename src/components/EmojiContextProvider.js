@@ -13,7 +13,6 @@ const EmojiContextProvider = (props) => {
         }
         fetchEmojis()
     }, [])
-    // console.log(emoji)
 
     return (
         <EmojiContext.Provider value={{ emoji, setEmoji }}>

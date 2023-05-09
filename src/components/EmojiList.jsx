@@ -4,7 +4,6 @@ import { EmojiContext } from './EmojiContextProvider.js'
 function EmojiList() {
     const { emoji, setEmoji } = useContext(EmojiContext)
     const [search, setSearch] = useState('')
-    // console.log('emoji', emoji)
 
     const filteredEmoji = useMemo(() => {
         return emoji.filter((emoji) => {
@@ -18,10 +17,7 @@ function EmojiList() {
 
     return (
         <div className="emoji-list max-w-5xl w-5/6 bg-gray-200 mx-auto shadow-lg shadow-purple-500 rounded-md h-[700px] overflow-scroll relative">
-            {/* make the search */}
             <div className="flex flex-row justify-center items-center gap-4 p-3 sticky top-0">
-                {/* make the follwing input fixed */}
-
                 <input
                     type="text"
                     placeholder="Search for your emoji - by name, category, or HTML code"
