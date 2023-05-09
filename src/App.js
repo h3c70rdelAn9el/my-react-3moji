@@ -7,7 +7,7 @@ function App() {
     // console.log(emoji)
     return (
         <div className="App">
-            <h1 className="text-3xl text-center">emoji</h1>
+            <h1 className="text-3xl text-center p-2">Emojis &#128512;</h1>
             {/* <EmojiContextProvider value={{ emoji: [], setEmoji: () => {} }}> */}
             <EmojiContextProvider>
                 <EmojiList />
