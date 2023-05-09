@@ -16,7 +16,7 @@ function EmojiList() {
     }, [search, emoji])
 
     return (
-        <div className="emoji-list max-w-5xl w-5/6 bg-gray-200 mx-auto shadow-lg shadow-purple-500 rounded-md h-[700px] overflow-scroll relative">
+        <div className="emoji-list max-w-5xl w-5/6 bg-gray-500 mx-auto shadow-lg shadow-purple-500 rounded-md h-3/4 overflow-scroll relative">
             <div className="flex flex-row justify-center items-center gap-4 p-3 sticky top-0">
                 <input
                     type="text"
@@ -32,7 +32,7 @@ function EmojiList() {
                 />
             </div>
 
-            <p className="text-sm text-gray-500 ml-16">
+            <p className="text-sm text-gray-800 ml-16">
                 {filteredEmoji.length} emojis!
             </p>
             <div className="flex flex-row flex-wrap gap-4 p-3 mt-4">
