@@ -17,9 +17,11 @@ function EmojiList() {
     }, [search, emoji])
 
     return (
-        <div className="emoji-list max-w-5xl w-5/6 bg-gray-200 mx-auto shadow-lg shadow-purple-500 rounded-md h-[700px] overflow-scroll">
+        <div className="emoji-list max-w-5xl w-5/6 bg-gray-200 mx-auto shadow-lg shadow-purple-500 rounded-md h-[700px] overflow-scroll relative">
             {/* make the search */}
-            <div className="flex flex-row justify-center items-center gap-4 p-3">
+            <div className="flex flex-row justify-center items-center gap-4 p-3 sticky top-0">
+                {/* make the follwing input fixed */}
+
                 <input
                     type="text"
                     placeholder="Search for your emoji - by name, category, or HTML code"
@@ -34,7 +36,7 @@ function EmojiList() {
                 />
             </div>
 
-            <div className="flex flex-row flex-wrap gap-4 p-3">
+            <div className="flex flex-row flex-wrap gap-4 p-3 mt-4">
                 {filteredEmoji.map((emoji) => (
                     <div
                         key={emoji.id}
