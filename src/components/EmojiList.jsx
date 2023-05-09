@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState } from 'react'
 import { EmojiContext } from './EmojiContextProvider.js'
 
 function EmojiList() {
-    const { emoji, setEmoji } = useContext(EmojiContext)
+    const { emoji } = useContext(EmojiContext)
     const [search, setSearch] = useState('')
 
     const filteredEmoji = useMemo(() => {
