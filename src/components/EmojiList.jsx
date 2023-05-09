@@ -36,6 +36,9 @@ function EmojiList() {
                 />
             </div>
 
+            <p className="text-sm text-gray-500 ml-16">
+                {filteredEmoji.length} emojis!
+            </p>
             <div className="flex flex-row flex-wrap gap-4 p-3 mt-4">
                 {filteredEmoji.map((emoji) => (
                     <div
