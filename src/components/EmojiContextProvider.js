@@ -1,9 +1,9 @@
 import React, { useState, useEffect, createContext } from 'react'
 
-export const EmojiContext = createContext()
+export const EmojiContext = createContext([() => {}])
 
 const EmojiContextProvider = (props) => {
-    const [emoji, setEmoji] = useState([])
+    const [emoji, setEmoji] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const EmojiContextProvider = (props) => {
 
     return (
         <EmojiContext.Provider value={{ emoji, setEmoji }}>
-            {isLoading ? (
+            {isLoading || emoji === null || emoji === undefined ? (
                 <div className="grid h-screen text-xl text-center bg-gray-100 place-items-center">
                     <p>
                         loading...
