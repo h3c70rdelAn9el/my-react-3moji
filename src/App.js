@@ -11,7 +11,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 className="fixed text-xs bottom-1 left-10">
-                Github Repo
+                GitHub Repo
             </a>
         </div>
     )
