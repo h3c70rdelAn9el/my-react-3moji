@@ -6,33 +6,38 @@ function EmojiList() {
     const [search, setSearch] = useState('')
 
     const filteredEmoji = useMemo(() => {
+        const searchTerms = search
+            .toLowerCase()
+            .split(' ')
+            .filter((term) => term.trim() !== '')
         return emoji.filter((emoji) => {
-            return (
-                emoji.name.toLowerCase().includes(search.toLowerCase()) ||
-                emoji.category.toLowerCase().includes(search.toLowerCase()) ||
-                emoji.htmlCode[0].toLowerCase().includes(search.toLowerCase())
+            return searchTerms.every(
+                (term) =>
+                    emoji.name.toLowerCase().includes(term) ||
+                    emoji.category.toLowerCase().includes(term) ||
+                    emoji.htmlCode[0].toLowerCase().includes(term)
             )
         })
     }, [search, emoji])
 
     return (
-        <div className="emoji-list max-w-5xl w-5/6 bg-gray-500 mx-auto shadow-lg shadow-purple-500 rounded-md h-3/4 overflow-scroll relative">
-            <div className="flex flex-row justify-center items-center gap-4 p-3 sticky top-0">
+        <div className="relative w-5/6 max-w-5xl mx-auto overflow-scroll bg-gray-500 rounded-md shadow-lg emoji-list shadow-purple-500 h-3/4">
+            <div className="sticky top-0 flex flex-row items-center justify-center gap-4 p-3">
                 <input
                     type="text"
                     placeholder="Search for your emoji - by name, category, or HTML code"
-                    className="border border-purple-500 rounded-md p-2 w-5/6 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-purple-200 text-sm md:block hidden"
+                    className="hidden w-5/6 p-2 text-sm bg-purple-200 border border-purple-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent md:block"
                     onChange={(e) => setSearch(e.target.value)}
                 />
                 <input
                     type="text"
                     placeholder="Search by name, category, or HTML code"
-                    className="border border-purple-500 rounded-md p-2 w-5/6 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-purple-200 text-xs md:hidden block"
+                    className="block w-5/6 p-2 text-xs bg-purple-200 border border-purple-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent md:hidden"
                     onChange={(e) => setSearch(e.target.value)}
                 />
             </div>
 
-            <p className="text-sm text-gray-800 ml-16">
+            <p className="ml-16 text-sm text-gray-800">
                 {filteredEmoji.length === 0
                     ? 'No emojis found'
                     : `Here are your ${filteredEmoji.length} emojis!`}
@@ -40,32 +45,26 @@ function EmojiList() {
             <div className="flex flex-row flex-wrap gap-4 p-3 mt-4">
                 {filteredEmoji.map((emoji) => (
                     <div
-                        // key={emoji.id}
-                        // getting a weird error with this, sometimes a turkey shows up
-                        key={`${emoji.id}-${emoji.name}`}
-                        className="flex flex-col border border-purple-500 w-60 rounded-md p-4 mx-auto shadow-lg bg-purple-300">
+                        key={emoji.id}
+                        emoji={emoji}
+                        className="flex flex-col p-4 mx-auto bg-purple-300 border border-purple-500 rounded-md shadow-lg w-60">
                         <span
                             className="text-5xl text-center"
                             dangerouslySetInnerHTML={{
                                 __html: emoji.htmlCode[0],
                             }}
                         />
-                        <div className="name flex flex-col text-sm pt-2 text-left">
+                        <div className="flex flex-col pt-2 text-sm text-left emoji-name">
                             <p className="text-xs font-bold">Emoji Name:</p>
                             <p className="text-sm">{emoji.name}</p>
                         </div>
-                        {/* <div className="w-1/2 h-1 bg-purple-400 mx-auto" /> */}
-                        <div className="emoji-category">
-                            <div className="name flex flex-col text-sm pt-2 text-left">
-                                <p className="text-xs font-bold">Category:</p>
-                                <p className="text-sm">{emoji.category}</p>
-                            </div>
+                        <div className="flex flex-col pt-2 text-sm text-left emoji-category">
+                            <p className="text-xs font-bold">Category:</p>
+                            <p className="text-sm">{emoji.category}</p>
                         </div>
-                        <div className="emoji-html-code">
-                            <div className="name flex flex-col text-sm pt-2 text-left">
-                                <p className="text-xs font-bold">HTML:</p>
-                                <p className="text-sm">{emoji.htmlCode[0]}</p>
-                            </div>
+                        <div className="flex flex-col pt-2 text-sm text-left emoji-html-code">
+                            <p className="text-xs font-bold">HTML:</p>
+                            <p className="text-sm">{emoji.htmlCode[0]}</p>
                         </div>
                     </div>
                 ))}
