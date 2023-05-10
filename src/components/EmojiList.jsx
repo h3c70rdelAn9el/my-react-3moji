@@ -33,12 +33,16 @@ function EmojiList() {
             </div>
 
             <p className="text-sm text-gray-800 ml-16">
-                {filteredEmoji.length} emojis!
+                {filteredEmoji.length === 0
+                    ? 'No emojis found'
+                    : `Here are your ${filteredEmoji.length} emojis!`}
             </p>
             <div className="flex flex-row flex-wrap gap-4 p-3 mt-4">
                 {filteredEmoji.map((emoji) => (
                     <div
-                        key={emoji.id}
+                        // key={emoji.id}
+                        // getting a weird error with this, sometimes a turkey shows up
+                        key={`${emoji.id}-${emoji.name}`}
                         className="flex flex-col border border-purple-500 w-60 rounded-md p-4 mx-auto shadow-lg bg-purple-300">
                         <span
                             className="text-5xl text-center"
