@@ -15,4 +15,4 @@
 11. Placed the EmojiList inside the App component.
     -   This is to show how the context provider will pass props successfully without having to pass through each component (prop drilling).
 
-If more time was alloted, I feel the app could be further improved by adding a 'copy' function for the HTML code, for users to be able to use. And I would perhaps add a modal when selecting an emoji to display it bigger and apart from others.
+If more time was alloted, I feel the app could be further improved by adding a 'copy' function for the HTML code, for users to be able to use. I would perhaps add a modal when selecting an emoji to display it bigger and apart from others. And of course-testing.
