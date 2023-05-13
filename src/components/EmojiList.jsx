@@ -2,6 +2,7 @@ import React, { useContext, useMemo, useState, useEffect } from 'react'
 import { EmojiContext } from './EmojiContextProvider.js'
 import EmojiSearch from './EmojiSearch.jsx'
 import CategoryDropdown from './CategoryDropdown.jsx'
+import CopyButton from './CopyButton.jsx'
 
 function EmojiList() {
     const { emoji } = useContext(EmojiContext)
@@ -47,7 +48,7 @@ function EmojiList() {
 
     return (
         <div className="relative flex flex-col w-5/6 max-w-5xl mx-auto overflow-scroll bg-gray-500 rounded-md shadow-lg emoji-list shadow-purple-500 h-3/4">
-            <div className="sticky top-0 flex flex-row items-center justify-between w-5/6 p-3 mx-auto">
+            <div className="sticky top-0 flex flex-row items-center justify-between w-5/6 p-3 mx-auto z-[99999]">
                 <div className="w-full">
                     <EmojiSearch setSearch={setSearch} />
                 </div>
@@ -67,9 +68,9 @@ function EmojiList() {
             </p>
 
             <main className="flex flex-row flex-wrap gap-4 p-3 mt-4">
-                {filteredEmoji.map((emoji) => (
+                {filteredEmoji.map((emoji, index) => (
                     <div
-                        key={emoji.id}
+                        key={emoji.index}
                         emoji={emoji}
                         className="flex flex-col p-4 mx-auto bg-purple-300 border border-purple-500 rounded-md shadow-lg w-60">
                         <span
@@ -88,7 +89,7 @@ function EmojiList() {
                         </div>
                         <div className="flex flex-col pt-2 text-sm text-left emoji-html-code">
                             <p className="text-xs font-bold">HTML:</p>
-                            <p className="text-sm">{emoji.htmlCode[0]}</p>
+                            <CopyButton text={emoji.htmlCode[0]} />
                         </div>
                     </div>
                 ))}
