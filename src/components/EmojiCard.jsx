@@ -5,7 +5,7 @@ const EmojiCard = ({ emoji }) => (
     <div
         key={emoji.index}
         emoji={emoji}
-        className="flex flex-col p-4 mx-auto bg-purple-300 border border-purple-500 rounded-md shadow-lg w-60">
+        className="flex flex-col p-4 mx-auto duration-300 bg-purple-300 border border-purple-500 rounded-md shadow-lg w-60 hover:scale-105">
         <span
             className="text-5xl text-center"
             dangerouslySetInnerHTML={{

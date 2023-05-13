@@ -13,6 +13,12 @@
 9.  Continue to style using TailwindCSS.
 10. Made an App component, and wrapped the EmojiContextProvider around it to be able to use the context from the provider.
 11. Placed the EmojiList inside the App component.
+
     -   This is to show how the context provider will pass props successfully without having to pass through each component (prop drilling).
 
-If more time was alloted, I feel the app could be further improved by adding a 'copy' function for the HTML code, for users to be able to use. I would perhaps add a modal when selecting an emoji to display it bigger and apart from others. And of course-testing.
+-   after interview
+
+12. Added a seperate component for the search bar
+13. Added a filter to go through categories
+14. Made a copy button and function to copy the HTML code on the emoji
+15. Made a card component for the emojis
