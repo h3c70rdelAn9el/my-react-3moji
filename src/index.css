@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .main-container {
+        @apply relative flex flex-col w-5/6 max-w-5xl mx-auto overflow-scroll bg-gray-500 rounded-md shadow-lg shadow-purple-500 h-3/4;
+    }
+}
